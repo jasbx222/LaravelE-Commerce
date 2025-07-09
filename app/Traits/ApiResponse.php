@@ -16,10 +16,7 @@ namespace App\Traits;
 }
     public function success(string $message, $data = null)
 {
-    $response = [
-        'message' => $message,
-        'status' => 'success',
-    ];
+
 
     if ($data !== null) {
         $response['data'] = $data;

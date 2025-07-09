@@ -20,12 +20,18 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        
         'password',
     ];
 
-    public function profile(){
-        return $this->hasOne(Profile::class);
-    }
+ 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array<int, string>
+     */
+ 
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,4 +51,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
