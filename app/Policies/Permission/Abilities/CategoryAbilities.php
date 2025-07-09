@@ -14,32 +14,28 @@ final class CategoryAbilities
      * إرجاع قائمة الصلاحيات المتاحة للمستخدم حسب نوعه
      */
     public static function getAbilities(User $user): array
-    {
-        $abilities = [];
-
- 
-       if (in_array($user->type, ['seller', 'admin'])) {
-            $abilities = [
-                self::DELETE,
-                self::UPDATE,
-                self::CREATE,
-                self::VIEW,
-            ];
-        }
-
-
-
-        // صلاحيات المستخدم العادي
-        else {
-            $abilities = [
-                self::VIEW,
-                self::CREATE,
-                self::UPDATE,
-                self::DELETE,
-
-            ];
-        }
-
-        return $abilities;
+{
+    // صلاحيات الأدمن: كل شيء
+    if ($user->type === 'admin') {
+        return [
+            self::DELETE,
+            self::UPDATE,
+            self::CREATE,
+            self::VIEW,
+        ];
     }
+
+    // صلاحيات البائع: عرض وتعديل فقط مثلاً
+    if ($user->type === 'seller') {
+        return [
+            self::VIEW,
+            self::UPDATE,
+        ];
+    }
+
+    // صلاحيات العميل: عرض فقط
+    return [
+        self::VIEW,
+    ];
+}
 }

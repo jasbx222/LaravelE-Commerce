@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies\Products;
+namespace App\Policies\category;
 
 use App\Models\Categorie;
 use App\Models\User;
@@ -11,41 +11,35 @@ class CategoriePolicy
 {
     use HandlesAuthorization;
 
-    public function show(User $user, Categorie $categorie)
+    public function show(User $user, Categorie $categorie): bool
     {
-        // منطق عرض المنتج (مثلاً للجميع)
+        // منطق عرض الصنف (مثلاً للجميع)
         return true;
     }
 
-    public function delete(User $user,Categorie $categorie)
+    public function delete(User $user, Categorie $categorie): bool
     {
-        if (! $this->hasAbility($user, CategoryAbilities::DELETE)) {
-            return false;
-        }
-        
+        return $this->hasAbility($user, CategoryAbilities::DELETE);
     }
 
-    public function update(User $user,Categorie $product)
+    public function update(User $user, Categorie $categorie): bool
     {
-        if (! $this->hasAbility($user, CategoryAbilities::UPDATE)) {
-            return false;
-        }
-       
+        return $this->hasAbility($user, CategoryAbilities::UPDATE);
     }
 
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $this->hasAbility($user, CategoryAbilities::CREATE);
     }
 
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $this->hasAbility($user, CategoryAbilities::VIEW);
     }
 
     private function hasAbility(User $user, string $ability): bool
     {
-        //هاي الدالة حتى   تجيب الصلاحيات لليوزر وتجك اذا عنده او لا
+        // هذه الدالة تجلب صلاحيات المستخدم وتتحقق من وجود الصلاحية المطلوبة
         $abilities = CategoryAbilities::getAbilities($user);
         return in_array($ability, $abilities);
     }

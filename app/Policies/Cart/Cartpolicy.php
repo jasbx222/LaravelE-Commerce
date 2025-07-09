@@ -12,6 +12,7 @@ class CartPolicy
 
     public function show(User $user, Cart $cart)
     {
+        
         return $user->id === $cart->user_id;
     }
 

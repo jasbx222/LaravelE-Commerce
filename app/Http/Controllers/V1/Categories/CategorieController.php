@@ -1,12 +1,10 @@
 <?php
 namespace App\Http\Controllers\V1\Categories;
 
-// use App\Http\Controllers\CategorieService;
-
-use App\Http\ApiController\ApiController;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategorieStoreRequest;
-use App\Http\Service\Admin\Categories\CategorieService;
+use App\Http\Service\V1\Categories\CategorieService;
 use App\Models\Categorie; // Assuming you have a Category model
 class CategorieController extends ApiController
 {
@@ -71,7 +69,7 @@ class CategorieController extends ApiController
 //delete 
 
 public function delete(Categorie $categorey){
-  $this->isAble('delete', $categorie); 
+  $this->isAble('delete', $categorey); 
 
 
     return $this->categorieService->DestroyCategories($categorey);

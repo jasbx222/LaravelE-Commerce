@@ -1,9 +1,7 @@
 <?php
-namespace App\Http\Service\Admin\Categories;
+namespace App\Http\Service\V1\Categories;
 
 use App\Models\Categorie;
-use App\Http\Requests\StoreCategorieRequest;
-use App\Http\Requests\UpdateCategorieRequest;
 use App\Http\Resources\Admin\CategoryResource;
 
 class CategorieService 
@@ -17,7 +15,7 @@ class CategorieService
     public function getCategoryById($category)
     {
     
-        return  new CategoryResource($category);
+        return  response()->json($category, 200);
     }
 
     //store
