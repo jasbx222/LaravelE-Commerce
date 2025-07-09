@@ -13,7 +13,7 @@ class Handler extends ExceptionHandler
     if ($exception instanceof AuthorizationException) {
         return response()->json([
             'message' => 'ليس لديك صلاحية للوصول إلى هذا المورد.',
-            'code' => 'unauthorized_cart_access',
+            'code' => 'unauthorized_access',
         ], 403);
     }
 
