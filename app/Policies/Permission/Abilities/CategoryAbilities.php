@@ -15,7 +15,7 @@ final class CategoryAbilities
      */
     public static function getAbilities(User $user): array
 {
-    // صلاحيات الأدمن: كل شيء
+    // صلاحيات الأدمن كل شيء
     if ($user->type === 'admin') {
         return [
             self::DELETE,
@@ -25,7 +25,7 @@ final class CategoryAbilities
         ];
     }
 
-    // صلاحيات البائع: عرض وتعديل فقط مثلاً
+    // صلاحيات البائع عرض وتعديل فقط 
     if ($user->type === 'seller') {
         return [
             self::VIEW,
@@ -33,7 +33,7 @@ final class CategoryAbilities
         ];
     }
 
-    // صلاحيات العميل: عرض فقط
+    // صلاحيات العميل عرض 
     return [
         self::VIEW,
     ];

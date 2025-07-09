@@ -5,6 +5,8 @@ use App\Models\User;
 
 final class ProductsAbilities
 {
+
+    // هذا كلاس الصلاحيات  للمنتجات 
     public const DELETE = 'delete';
     public const UPDATE = 'update';
     public const CREATE = 'create';
@@ -12,7 +14,7 @@ final class ProductsAbilities
 
      public static function getAbilities(User $user): array
 {
-    // صلاحيات الأدمن: كل شيء
+    // صلاحيات الأدمن كل شيء
     if ($user->type === 'admin') {
         return [
             self::DELETE,
@@ -21,8 +23,11 @@ final class ProductsAbilities
             self::VIEW,
         ];
     }
+   
 
-    // صلاحيات البائع: عرض وتعديل فقط مثلاً
+
+
+    // صلاحيات البائع عرض وتعديل فقط 
     if ($user->type === 'seller') {
         return [
             self::VIEW,
@@ -30,7 +35,7 @@ final class ProductsAbilities
         ];
     }
 
-    // صلاحيات العميل: عرض فقط
+    // صلاحيات العميل عرض فقط
     return [
         self::VIEW,
     ];
