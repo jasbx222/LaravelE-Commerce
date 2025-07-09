@@ -25,6 +25,8 @@ class ProductResource extends JsonResource
             'discount_percent' => $this->discount_percent,
             'category_id' => $this->category_id,
             'seller_id' => $this->seller_id,
+                 'created_at'  => $this->created_at->toDateTimeString(),
+            'updated_at'  => $this->updated_at->toDateTimeString(),
           
             'links' => [
                 'self' => route('products.show', $this->id),

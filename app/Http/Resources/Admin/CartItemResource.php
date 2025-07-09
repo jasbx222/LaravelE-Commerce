@@ -20,6 +20,8 @@ class CartItemResource extends JsonResource
             'quantity' => $this->quantity,
             'unit_price' => $this->unit_price,
             'total_price' => $this->total_price,
+             'created_at'  => $this->created_at->toDateTimeString(),
+            'updated_at'  => $this->updated_at->toDateTimeString(),
           
             ];
     }
