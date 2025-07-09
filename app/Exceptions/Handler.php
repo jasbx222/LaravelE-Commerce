@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -15,7 +16,10 @@ class Handler extends ExceptionHandler
             'message' => 'ليس لديك صلاحية للوصول إلى هذا المورد.',
             'code' => 'unauthorized_access',
         ], 403);
-    }
+    }else if ($exception instanceof ModelNotFoundException) {
+    return response()->json(['error' => 'العنصر غير غير موجود'], 404);
+}
+
 
     return parent::render($request, $exception);
 }
