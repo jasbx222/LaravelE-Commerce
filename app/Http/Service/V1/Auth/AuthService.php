@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthService extends Controller
+class AuthService extends Controller
 {
      use ApiResponse;
     /**
