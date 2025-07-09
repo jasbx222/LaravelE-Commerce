@@ -17,7 +17,7 @@ final class CategoryAbilities
     {
         $abilities = [];
 
-        // صلاحيات المدير
+ 
        if (in_array($user->type, ['seller', 'admin'])) {
             $abilities = [
                 self::DELETE,
